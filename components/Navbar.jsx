@@ -12,7 +12,7 @@ const navLinks = [
   { href: "/inflation", label: "Inflation" },
 ];
 
-const githubUrl = "https://github.com/YOUR_USERNAME_OR_REPO";
+const githubUrl = "https://github.com/zaskhakhalfani";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -23,7 +23,7 @@ export default function Navbar() {
 
   return (
     <nav className="sticky top-0 z-40 border-b border-slate-800 bg-slate-950/95 backdrop-blur">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-3 py-2 sm:px-4">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-3 py-2 sm:px-4">
         {/* Left: logo */}
         <Link href="/" className="flex items-baseline gap-1">
           <span className="text-sm font-semibold text-emerald-400">
@@ -36,6 +36,7 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <div className="hidden items-center gap-4 md:flex">
+          {/* Links pill */}
           <div className="flex items-center gap-2 rounded-full bg-slate-900 px-1 py-1">
             {navLinks.map((link) => (
               <Link
@@ -88,10 +89,10 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu panel */}
+      {/* Mobile dropdown */}
       {open && (
         <div className="border-t border-slate-800 bg-slate-950 md:hidden">
-          <div className="mx-auto flex max-w-5xl flex-col gap-1 px-3 py-2">
+          <div className="mx-auto flex max-w-6xl flex-col gap-1 px-3 py-2">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
