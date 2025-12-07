@@ -12,16 +12,19 @@ export const metadata = {
   },
 };
 
+import "./globals.css";
+import Navbar from "@/components/Navbar";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-slate-950 text-slate-50 flex flex-col">
+      <body className="bg-slate-950 text-slate-50">
         <Navbar />
-        <main className="flex-1 max-w-6xl mx-auto w-full px-4 py-8">
+        <main className="mx-auto max-w-5xl px-3 sm:px-4 py-6">
           {children}
         </main>
-        <Footer />
       </body>
     </html>
   );
 }
+
