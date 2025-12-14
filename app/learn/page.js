@@ -478,6 +478,8 @@ export default function LearnPage() {
   const [loading, setLoading] = useState(false);
   const [quizSelection, setQuizSelection] = useState(null);
   const [quizResult, setQuizResult] = useState(null);
+  const [timelineItem, setTimelineItem] = useState(null);
+  const [timelineOpen, setTimelineOpen] = useState(false);
 
   // mini-dashboard state (live + fallback)
   const [dashboardItems, setDashboardItems] = useState(
@@ -910,9 +912,14 @@ export default function LearnPage() {
 
         <div className="mt-2 flex gap-3 overflow-x-auto pb-2">
           {macroTimeline.map((item) => (
-            <div
+            <button
+              type="button"
               key={item.year}
-              className="min-w-[190px] max-w-[220px] rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-950 via-slate-950/80 to-slate-900/80 p-3 text-[11px] sm:text-xs"
+              onClick={() => {
+                setTimelineItem(item);
+                setTimelineOpen(true);
+              }}
+              className="min-w-[190px] max-w-[220px] rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-950 via-slate-950/80 to-slate-900/80 p-3 text-[11px] sm:text-xs hover:border-emerald-500/40 focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
             >
               <p className="text-[10px] text-emerald-400 font-semibold">
                 {item.year}
@@ -925,10 +932,72 @@ export default function LearnPage() {
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
                 {item.tag}
               </p>
-            </div>
+            </button>
           ))}
         </div>
       </section>
+
+      {/* Timeline modal */}
+      {timelineOpen && timelineItem && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 p-4">
+          <div className="w-full max-w-2xl rounded-3xl border border-slate-800 bg-slate-950 p-5 shadow-xl">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-xs font-semibold text-emerald-400 uppercase tracking-wide">
+                  {timelineItem.year} · {timelineItem.tag}
+                </p>
+                <h3 className="mt-1 text-xl font-semibold text-slate-100">
+                  {timelineItem.title}
+                </h3>
+                <p className="mt-2 text-sm text-slate-300">
+                  {timelineItem.desc}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setTimelineOpen(false)}
+                className="rounded-full border border-slate-700 bg-slate-900 p-2 text-slate-100 hover:bg-slate-800"
+                aria-label="Close"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="mt-4 rounded-2xl border border-slate-800 bg-slate-950/60 p-4">
+              <p className="text-xs font-semibold text-emerald-400 uppercase tracking-wide">
+                Why it matters
+              </p>
+              <p className="mt-2 text-sm text-slate-300">
+                Use this event to connect <span className="text-slate-100 font-semibold">context → mechanism → impact</span>.
+                Start by stating what happened, explain the economic mechanism (inflation, rates, jobs, confidence, policy),
+                and finish with the implication for households, firms, or markets.
+              </p>
+            </div>
+
+            <div className="mt-4 flex flex-wrap gap-2">
+              <Link
+                href="/inflation"
+                className="rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-emerald-400"
+              >
+                Explore inflation →
+              </Link>
+              <Link
+                href="/portfolio"
+                className="rounded-full border border-slate-700 bg-slate-900 px-4 py-2 text-sm text-slate-100 hover:bg-slate-800"
+              >
+                Portfolio simulator →
+              </Link>
+              <button
+                type="button"
+                onClick={() => setTimelineOpen(false)}
+                className="rounded-full border border-slate-700 bg-slate-900 px-4 py-2 text-sm text-slate-100 hover:bg-slate-800"
+              >
+                Back to timeline
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

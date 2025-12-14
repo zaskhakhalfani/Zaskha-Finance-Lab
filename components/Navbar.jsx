@@ -7,9 +7,9 @@ import { useState } from "react";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/learn", label: "Learn" },
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/inflation", label: "Inflation" },
+  { href: "/labs", label: "Labs" },
+  { href: "/tools", label: "Tools" },
+  { href: "/newsletter", label: "Newsletter" },
 ];
 
 const githubUrl = "https://github.com/zaskhakhalfani";

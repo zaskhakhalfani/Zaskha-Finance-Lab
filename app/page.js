@@ -319,29 +319,25 @@ export default function HomePage() {
       <section className="md:grid md:grid-cols-2 md:gap-10 md:items-center md:space-y-0 space-y-6">
         <div className="space-y-4">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight">
-            Understand inflation, rates, and investing —
-            <br />
-            <span className="text-emerald-400">
-              then use them to grow your real money.
-            </span>
+            Understand money.<br />
+            <span className="text-emerald-400">Understand the economy.</span>
           </h1>
           <p className="text-sm sm:text-base text-slate-300 max-w-xl">
-            Zaskha Finance Lab helps you understand inflation, interest rates,
-            and investing – then shows how they affect your income, savings, and
-            future wealth.
+            Clear tools, explanations, and real-world context to help you make sense
+            of finance and economic change — without noise or hype.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/learn"
+              href="/labs"
               className="px-4 py-2.5 rounded-full bg-emerald-500 text-slate-950 text-sm font-semibold hover:bg-emerald-400 transition"
             >
-              Start learning
+              Explore Labs
             </Link>
             <Link
-              href="/portfolio"
+              href="/tools"
               className="px-4 py-2.5 rounded-full border border-slate-600 text-sm hover:bg-slate-900 transition"
             >
-              Try the portfolio simulator
+              Try a tool
             </Link>
           </div>
         </div>
